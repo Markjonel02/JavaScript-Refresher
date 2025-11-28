@@ -24,3 +24,21 @@ const activeUsers = users
   .map((user) => user.name);
 
 console.log(activeUsers); // Output: ['Alice', 'Charlie', 'Eve']5
+
+const movies = [
+  { title: "Inception", genre: "sci-fi" },
+  { title: "The Dark Knight", genre: "action" },
+  { title: "Interstellar", genre: "sci-fi" },
+  { title: "The Notebook", genre: "romance" },
+  { title: "Avengers: Endgame", genre: "action" },
+];
+
+function Filteredovies(genre) {
+  const filteredmovies = movies
+    .filter((m) => m.genre.toLowerCase() === genre.toLowerCase())
+    .map((movie) => "title: " + movie.title + ", genre: " + movie.genre);
+  return filteredmovies;
+}
+
+console.log(Filteredovies("Sci-Fi"));
+console.log(Filteredovies("Action"));
