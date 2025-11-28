@@ -42,3 +42,32 @@ function Filteredovies(genre) {
 
 console.log(Filteredovies("Sci-Fi"));
 console.log(Filteredovies("Action"));
+
+const books = [
+  { title: "Clean Code", author: "Robert C. Martin", available: true },
+  { title: "You Don’t Know JS", author: "Kyle Simpson", available: false },
+  {
+    title: "JavaScript: The Good Parts",
+    author: "Douglas Crockford",
+    available: true,
+  },
+  {
+    title: "Eloquent JavaScript",
+    author: "Marijn Haverbeke",
+    available: false,
+  },
+  { title: "The Pragmatic Programmer", author: "Andrew Hunt", available: true },
+];
+
+function Filterbooks(available) {
+  const filterbooks = books
+    .filter((b) => b.available === available)
+    .map(
+      (book) =>
+        `Title:${book.title},Author:${book.author},Available:${book.available}`
+    );
+
+  return filterbooks;
+}
+
+console.log(Filterbooks(true));
