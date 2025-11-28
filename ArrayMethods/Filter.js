@@ -1,4 +1,4 @@
-const Filteruser = (name, isactive) => {
+/* const Filteruser = (name, isactive) => {
   const users = [
     { name: "mark", isactive: true },
     { name: "relles", isactive: false },
@@ -71,3 +71,22 @@ function Filterbooks(available) {
 }
 
 console.log(Filterbooks(true));
+ */
+
+const scores = [95, 67, 88, 74, 100, 59, 82, 76, 45, 91];
+
+function GetScors() {
+  const highscores = scores
+    .filter((s) => s >= 75)
+    .map((score) => `score: ${score}, status: passing `);
+  return highscores;
+}
+function GetFailingScores(score) {
+  const failed = scores.filter(score < 75).map((r) => r);
+
+  if (failed.length === 0) {
+    return "All scores are passing.";
+  }
+  return failed;
+}
+console.log(GetScors(75));
