@@ -73,7 +73,7 @@ function Filterbooks(available) {
 console.log(Filterbooks(true));
  */
 
-const scores = [95, 67, 88, 74, 100, 59, 82, 76, 45, 91];
+/* const scores = [95, 67, 88, 74, 100, 59, 82, 76, 45, 91];
 
 function GetScors() {
   const highscores = scores
@@ -90,3 +90,26 @@ function GetFailingScores(score) {
   return failed;
 }
 console.log(GetScors(75));
+ */
+
+const tasks = [
+  { title: "Fix login bug", priority: "high", completed: true },
+  { title: "Update documentation", priority: "medium", completed: false },
+  { title: "Design new landing page", priority: "low", completed: true },
+  { title: "Refactor checkout flow", priority: "high", completed: false },
+  { title: "Optimize database queries", priority: "medium", completed: true },
+];
+
+function getCompletedTask(completed, priority) {
+  const completedtasks = tasks
+    .filter((t) => t.completed === completed && t.priority === priority)
+    .map(
+      (task) =>
+        `Title: ${task.title}, Priority: ${task.priority}, Completed: ${task.completed}`
+    );
+
+  return completedtasks;
+}
+
+console.log(getCompletedTask(true, "low"));
+console.log(getCompletedTask(false, "high"));
