@@ -149,7 +149,7 @@ function getDeliveredHighValueOrders() {
 console.log(getDeliveredHighValueOrders());
  */
 
-const students = [
+/* const students = [
   { name: "Alice", scores: [85, 90, 78], passed: true },
   { name: "Bob", scores: [60, 55, 70], passed: false },
   { name: "Charlie", scores: [92, 88, 95], passed: true },
@@ -176,3 +176,4 @@ function getStudents() {
 }
 
 console.log("gradereport:", getStudents());
+ */
