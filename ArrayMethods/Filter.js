@@ -115,7 +115,8 @@ console.log(getCompletedTask(true, "low"));
 console.log(getCompletedTask(false, "high"));
  */
 
-const orders = [
+/* const orders = [
+
   { name: "Laptop", price: 45000, quantity: 2, delivered: true },
   { name: "Mouse", price: 800, quantity: 5, delivered: false },
   { name: "Keyboard", price: 1500, quantity: 3, delivered: true },
@@ -146,3 +147,32 @@ function getDeliveredHighValueOrders() {
 }
 
 console.log(getDeliveredHighValueOrders());
+ */
+
+const students = [
+  { name: "Alice", scores: [85, 90, 78], passed: true },
+  { name: "Bob", scores: [60, 55, 70], passed: false },
+  { name: "Charlie", scores: [92, 88, 95], passed: true },
+  { name: "Diana", scores: [95, 95, 95], passed: true },
+  { name: "Eve", scores: [40, 50, 45], passed: false },
+];
+
+function getStudents() {
+  const highgrade = students.filter((s) => s.passed);
+
+  const mapStudents = highgrade.map((s) => {
+    const averageScore = s.scores.reduce((a, b) => a + b, 0) / s.scores.length;
+    return { name: s.name, average: parseFloat(averageScore.toFixed(2)) };
+  });
+
+  const totalAverage =
+    mapStudents.reduce((acc, student) => acc + student.average, 0) /
+    mapStudents.length;
+
+  return {
+    students: mapStudents,
+    classAverage: parseFloat(totalAverage.toFixed(2)),
+  };
+}
+
+console.log("gradereport:", getStudents());
