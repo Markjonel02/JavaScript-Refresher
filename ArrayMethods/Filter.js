@@ -92,7 +92,7 @@ function GetFailingScores(score) {
 console.log(GetScors(75));
  */
 
-const tasks = [
+/* const tasks = [
   { title: "Fix login bug", priority: "high", completed: true },
   { title: "Update documentation", priority: "medium", completed: false },
   { title: "Design new landing page", priority: "low", completed: true },
@@ -113,3 +113,36 @@ function getCompletedTask(completed, priority) {
 
 console.log(getCompletedTask(true, "low"));
 console.log(getCompletedTask(false, "high"));
+ */
+
+const orders = [
+  { name: "Laptop", price: 45000, quantity: 2, delivered: true },
+  { name: "Mouse", price: 800, quantity: 5, delivered: false },
+  { name: "Keyboard", price: 1500, quantity: 3, delivered: true },
+  { name: "Monitor", price: 12000, quantity: 1, delivered: true },
+  { name: "Headphones", price: 2500, quantity: 4, delivered: false },
+];
+function getDeliveredHighValueOrders() {
+  const filteredOrders = orders.filter((o) => o.delivered === true);
+
+  const mappedOrders = filteredOrders.map((order) => ({
+    name: order.name,
+    totalValue: order.price * order.quantity,
+  }));
+
+  const totalValueOrders = mappedOrders.reduce(
+    (sum, item) => sum + item.totalValue
+  );
+
+  const formattedOrders = totalValueOrders.toLocaleString("en-PH", {
+    style: "currency",
+    currency: "PHP",
+  });
+
+  return {
+    items: mappedOrders,
+    totalValue: formattedOrders,
+  };
+}
+
+console.log(getDeliveredHighValueOrders());
