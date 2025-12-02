@@ -9,7 +9,7 @@ const result = sample
 console.log(result); // [1, 3, 5]
  */
 
-const employees = [
+/* const employees = [
   { name: "Mark", role: "Web Developer", salary: 35000 },
   { name: "Jane", role: "Designer", salary: 28000 },
   { name: "Carlos", role: "Project Manager", salary: 50000 },
@@ -35,3 +35,36 @@ function getBonuses() {
 }
 
 console.log("Bonuses:", getBonuses());
+ */
+
+const cart = [
+  { name: "Laptop", price: 45000, quantity: 1, discountEligible: true },
+  { name: "Mouse", price: 800, quantity: 2, discountEligible: false },
+  { name: "Keyboard", price: 1500, quantity: 1, discountEligible: true },
+  { name: "Monitor", price: 12000, quantity: 2, discountEligible: true },
+  { name: "Headphones", price: 2500, quantity: 1, discountEligible: false },
+];
+
+const getDiscount = () => {
+  const filterEligible = cart.filter((e) => e.discountEligible === true);
+
+  const mapEligible = filterEligible.map((items) => {
+    const subtotal = items.price * items.quantity;
+    const discount = subtotal * 0.1;
+    return { name: items.name, subtotal, discount };
+  });
+
+  const totalSvings = mapEligible.reduce((sum, item) => sum + item.discount, 0);
+
+  const [first, second, ...others] = mapEligible;
+
+  return {
+    first,
+    second,
+    others,
+    totalSvings,
+  };
+};
+
+console.log("All Save Discount:", getDiscount());
+
