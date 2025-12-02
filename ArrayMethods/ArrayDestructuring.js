@@ -36,7 +36,7 @@ function getBonuses() {
 
 console.log("Bonuses:", getBonuses());
  */
-
+/* 
 const cart = [
   { name: "Laptop", price: 45000, quantity: 1, discountEligible: true },
   { name: "Mouse", price: 800, quantity: 2, discountEligible: false },
@@ -67,4 +67,41 @@ const getDiscount = () => {
 };
 
 console.log("All Save Discount:", getDiscount());
+ */
 
+const players = [
+  { name: "Jordan", team: "Bulls", points: [30, 28, 35, 40] },
+  { name: "Kobe", team: "Lakers", points: [25, 20, 22, 27] },
+  { name: "LeBron", team: "Cavs", points: [18, 15, 20, 19] },
+  { name: "Curry", team: "Warriors", points: [32, 29, 34, 31] },
+  { name: "Durant", team: "Nets", points: [26, 24, 28, 30] },
+];
+
+const PlayerAnalysis = () => {
+  const FilterPlayers = players.filter((player) => {
+    const ave = player.points.reduce(
+      (sum, point) => sum + point / player.points.length
+    );
+    return ave > 20;
+  });
+
+  const MapPlayers = FilterPlayers.map((p) => {
+    const ave =
+      p.points.reduce((sum, point) => sum + point, 0) / p.points.length;
+    return { name: p.name, team: p.team, average: ave };
+  });
+
+  const totalAverage =
+    MapPlayers.reduce((sum, p) => sum + p.average, 0) / MapPlayers.length;
+
+  const [first, second, ...others] = MapPlayers;
+
+  return {
+    first,
+    second,
+    others,
+    totalAverage,
+  };
+};
+
+console.log("the highest Points per game is: ", PlayerAnalysis());
