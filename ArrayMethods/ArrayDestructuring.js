@@ -7,3 +7,6 @@ const result = sample
   .map((s) => s); // return the number itself
 
 console.log(result); // [1, 3, 5]
+
+
+
