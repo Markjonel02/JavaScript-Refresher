@@ -77,7 +77,7 @@ const players = [
   { name: "Durant", team: "Nets", points: [26, 24, 28, 30] },
 ];
 
-const PlayerAnalysis = () => {
+/* const PlayerAnalysis = () => {
   const FilterPlayers = players.filter((player) => {
     const ave = player.points.reduce(
       (sum, point) => sum + point / player.points.length
@@ -105,3 +105,40 @@ const PlayerAnalysis = () => {
 };
 
 console.log("the highest Points per game is: ", PlayerAnalysis());
+ */
+
+const movies = [
+  { title: "Inception", genre: "Sci-Fi", ratings: [9, 8, 10, 9] },
+  { title: "Titanic", genre: "Romance", ratings: [7, 8, 6, 7] },
+  { title: "The Dark Knight", genre: "Action", ratings: [10, 9, 9, 8] },
+  { title: "Interstellar", genre: "Sci-Fi", ratings: [9, 9, 8, 10] },
+  { title: "Frozen", genre: "Animation", ratings: [6, 7, 6, 5] },
+];
+
+const MovieAnalyzer = () => {
+  const filterMovies = movies.filter((m) => {
+    const averating =
+      m.ratings.reduce((sum, movie) => sum + movie, 0) / m.ratings.length;
+    return averating > 7.5;
+  });
+
+  const mapmovies = filterMovies.map((mov) => {
+    const ave =
+      mov.ratings.reduce((sum, movie) => sum + movie, 0) / mov.ratings.length;
+    return { name: mov.title, genre: mov.genre, average: ave };
+  });
+
+  const totalRatings =
+    mapmovies.reduce((s, m) => s + m.average, 0) / mapmovies.length;
+
+  const [first, second, ...others] = mapmovies;
+
+  return {
+    first,
+    second,
+    others,
+    totalRatings,
+  };
+};
+
+console.log(MovieAnalyzer());
