@@ -107,7 +107,7 @@ const players = [
 console.log("the highest Points per game is: ", PlayerAnalysis());
  */
 
-const movies = [
+/* const movies = [
   { title: "Inception", genre: "Sci-Fi", ratings: [9, 8, 10, 9] },
   { title: "Titanic", genre: "Romance", ratings: [7, 8, 6, 7] },
   { title: "The Dark Knight", genre: "Action", ratings: [10, 9, 9, 8] },
@@ -142,3 +142,39 @@ const MovieAnalyzer = () => {
 };
 
 console.log(MovieAnalyzer());
+ */
+
+const students = [
+  { name: "Alice", grades: [80, 85, 90], status: "active" },
+  { name: "Bob", grades: [60, 70, 65], status: "active" },
+  { name: "Charlie", grades: [88, 92, 95], status: "active" },
+  { name: "Diana", grades: [75, 78, 80], status: "inactive" },
+  { name: "Eve", grades: [90, 85, 87], status: "active" },
+];
+
+const classAnalysis = () => {
+  const filterActive = students.filter((a) => {
+    const ave =
+      a.grades.reduce((sum, grade) => sum + grade, 0) / a.grades.length;
+    return a.status === "active" && ave >= 75;
+  });
+
+  const filteredactive = filterActive.map((a) => {
+    const average = a.grades.reduce((sum, g) => sum + g, 0) / a.grades.length;
+    return { name: a.name, average };
+  });
+
+  const TotalGPa =
+    filteredactive.reduce((sum, a) => sum + a.average, 0) /
+    filteredactive.length;
+
+  const [first, second, ...others] = filteredactive;
+  return {
+    first,
+    second,
+    others,
+    TotalGPa,
+  };
+};
+
+console.log(classAnalysis());
