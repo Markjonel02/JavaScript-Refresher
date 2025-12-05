@@ -144,7 +144,7 @@ const MovieAnalyzer = () => {
 console.log(MovieAnalyzer());
  */
 
-const students = [
+/* const students = [
   { name: "Alice", grades: [80, 85, 90], status: "active" },
   { name: "Bob", grades: [60, 70, 65], status: "active" },
   { name: "Charlie", grades: [88, 92, 95], status: "active" },
@@ -178,3 +178,38 @@ const classAnalysis = () => {
 };
 
 console.log(classAnalysis());
+ */
+
+const employees = [
+  { name: "Anna", salaries: [30000, 32000, 31000] },
+  { name: "Ben", salaries: [25000, 26000, 25500] },
+  { name: "Cara", salaries: [40000, 42000, 41000] },
+  { name: "Dan", salaries: [28000, 29000, 28500] },
+];
+
+function salarYanalysis() {
+  const employee_fitler = employees.filter((a) => {
+    const ave = a.salaries.reduce((sum, a) => sum + a, 0) / a.salaries.length;
+    return ave >= 30000;
+  });
+
+  const employee_map = employee_fitler.map((a) => {
+    const map_ave =
+      a.salaries.reduce((sum, b) => sum + b, 0) / a.salaries.length;
+    return { name: a.name, average: map_ave };
+  });
+
+  const Overall_salaries =
+    employee_map.reduce((sum, c) => sum + c.average, 0) / employee_map.length;
+
+  const [first, second, ...others] = employee_map;
+
+  return {
+    first,
+    second,
+    others,
+    Overall_salaries,
+  };
+}
+
+console.log(salarYanalysis());
