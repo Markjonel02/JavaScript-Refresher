@@ -1,4 +1,4 @@
-const students = [
+/* const students = [
   { name: "Alice", scores: [90, 85, 88], scholarship: false },
   { name: "Bob", scores: [70, 75, 72], scholarship: false },
   { name: "Charlie", scores: [95, 92, 96], scholarship: false },
@@ -28,3 +28,16 @@ const getStudents = () => {
 };
 
 console.log(getStudents());
+
+
+
+const data = {
+ items: ["pen", "book", "laptop"]
+};
+
+const {
+ items: [first, ...rest]
+} = data;
+
+console.log(first, rest);
+ */

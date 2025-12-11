@@ -1,6 +1,9 @@
 const cars = ["suzuki", "volvo", "Bmw", "Ford"];
 let len = cars.length;
-const element = "";
-for (let i = 0; i < len; i++) {
-  element += cars[i] + "/n";
-}
+let element = ""; // use let
+
+do {
+  element += cars[1] + "/n";
+} while (len >= 3);
+
+console.log(element); // print the final string
