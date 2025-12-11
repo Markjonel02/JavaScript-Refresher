@@ -41,3 +41,41 @@ const {
 
 console.log(first, rest);
  */
+
+const online = [
+  { id: 1, customer: "Alice", items: 3, total: 1200 },
+  { id: 2, customer: "Bob", items: 1, total: 300 },
+  { id: 3, customer: "Charlie", items: 5, total: 2500 },
+  { id: 4, customer: "David", items: 2, total: 800 },
+  { id: 5, customer: "Eve", items: 4, total: 1600 },
+];
+
+const OnlineStoreOrders = () => {
+  const filterTotal = online.filter((f) => f.total > 1000);
+
+  const mappedTotal = filterTotal.map((f) => {
+    const returnTotal = f.total;
+    return { customerName: f.customer, Total: returnTotal };
+  });
+  const finalTotal =
+    mappedTotal.reduce((sum, items) => sum + items.Total, 0) /
+    mappedTotal.length;
+
+  const highValueCustomers = online
+    .filter(({ total }) => total > 1000)
+    .map(({ customer }) => customer);
+
+  const stats = online.reduce(
+    (acc, { total, items }) => {
+      acc.grandTotal += total;
+      acc.totalItems += items;
+      return acc;
+    },
+    { grandTotal: 0, totalItems: 0 }
+  );
+  const [first, second, ...last] = mappedTotal;
+
+  return { first, second, last, finalTotal, highValueCustomers, stats };
+};
+
+console.log(OnlineStoreOrders());
