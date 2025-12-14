@@ -88,7 +88,7 @@ const cart = [
   { name: "Keyboard", price: 100, inStock: true },
 ];
 
-const CartShop = (stock) => {
+const CartShop = (stock, itemCheck) => {
   const filterProductOut = cart.filter((p) => (p.inStock = stock));
 
   const getNamePrice = filterProductOut.map(
@@ -104,7 +104,7 @@ const CartShop = (stock) => {
 
   const checkItem = filterProductOut
     .map((item) => item.name)
-    .indexOf("keyboard");
+    .indexOf(itemCheck);
 
   return {
     filterProductOut,
@@ -116,4 +116,4 @@ const CartShop = (stock) => {
   };
 };
 
-console.log(CartShop(true));
+console.log(CartShop(true), "keyboard");
