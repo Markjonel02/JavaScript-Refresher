@@ -41,7 +41,7 @@ const {
 
 console.log(first, rest);
  */
-
+/* 
 const online = [
   { id: 1, customer: "Alice", items: 3, total: 1200 },
   { id: 2, customer: "Bob", items: 1, total: 300 },
@@ -79,3 +79,41 @@ const OnlineStoreOrders = () => {
 };
 
 console.log(OnlineStoreOrders());
+ */
+
+const cart = [
+  { name: "Laptop", price: 1200, inStock: true },
+  { name: "Phone", price: 800, inStock: false },
+  { name: "Headphones", price: 150, inStock: true },
+  { name: "Keyboard", price: 100, inStock: true },
+];
+
+const CartShop = (stock) => {
+  const filterProductOut = cart.filter((p) => (p.inStock = stock));
+
+  const getNamePrice = filterProductOut.map(
+    (itemName) => `${itemName.name},$${itemName.price}`
+  );
+
+  const totalPrices = filterProductOut.reduce(
+    (sum, item) => sum + item.price,
+    0
+  );
+
+  const [first, second] = filterProductOut;
+
+  const checkItem = filterProductOut
+    .map((item) => item.name)
+    .indexOf("keyboard");
+
+  return {
+    filterProductOut,
+    getNamePrice,
+    totalPrices,
+    first,
+    second,
+    checkItem,
+  };
+};
+
+console.log(CartShop(true));
