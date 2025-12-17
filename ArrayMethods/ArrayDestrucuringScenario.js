@@ -81,7 +81,7 @@ const OnlineStoreOrders = () => {
 console.log(OnlineStoreOrders());
  */
 
-const cart = [
+/* const cart = [
   { name: "Laptop", price: 1200, inStock: true },
   { name: "Phone", price: 800, inStock: false },
   { name: "Headphones", price: 150, inStock: true },
@@ -117,3 +117,90 @@ const CartShop = (stock, itemCheck) => {
 };
 
 console.log(CartShop(true), "keyboard");
+ */ /* 
+const students = [
+  { name: "Alice", grade: 85, pass: true },
+  { name: "Bob", grade: 45, pass: false },
+  { name: "Charlie", grade: 92, pass: true },
+  { name: "Diana", grade: 70, pass: false },
+  { name: "Ethan", grade: 55, pass: false },
+];
+
+const studentPasser = (passed, studName) => {
+  const passedStudents = students.filter((s) => (s.pass = passed));
+
+  const mappedNames = passedStudents.map((f) => `${f.name}-${f.grade}}`);
+
+  const totalGrade =
+    passedStudents.reduce((sum, g) => sum + g.grade, 0) / passedStudents.length;
+
+  const [first, second] = passedStudents;
+
+  const getIndex = passedStudents.map((s) => s.name).indexOf(studName);
+
+  return { passedStudents, mappedNames, totalGrade, first, second, getIndex };
+};
+
+console.log(studentPasser(true, "Alice"));
+ */
+
+const orders = [
+  {
+    id: 1,
+    customer: "Alice",
+    items: [
+      { name: "Laptop", price: 1200 },
+      { name: "Mouse", price: 25 },
+    ],
+  },
+  {
+    id: 2,
+    customer: "Bob",
+    items: [
+      { name: "Keyboard", price: 75 },
+      { name: "Monitor", price: 200 },
+    ],
+  },
+  {
+    id: 3,
+    customer: "Charlie",
+    items: [
+      { name: "USB Cable", price: 10 },
+      { name: "Charger", price: 15 },
+    ],
+  },
+];
+
+const OnlineStore = (customName) => {
+  const filterPrice = orders.filter((f) =>
+    f.items.some((item) => item.price > 100)
+  );
+
+  const filteredOrders = filterPrice.map((order) => ({
+    name: order.customer,
+    itemCount: order.items.length,
+  }));
+
+  const totalOrders = filterPrice.reduce((sum, order) => {
+    const totalrevenue = order.items.reduce((acc, item) => acc + item.price, 0);
+    return sum + totalrevenue;
+  }, 0);
+
+  const [
+    {
+      customer,
+      items: [{ name: firstItemName }],
+    },
+  ] = orders;
+  console.log(customer, firstItemName); // Alice Laptop
+
+  const CustomerNames = orders
+    .map((order) => order.customer)
+    .indexOf(customName);
+
+  return { filterPrice, filteredOrders, totalOrders, customer, CustomerNames };
+};
+
+console.log(OnlineStore("Bob"));
+
+console.log(OnlineStore("Bob"));
